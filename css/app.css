@@ -1,0 +1,187 @@
+#header h1 {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+#header p{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 100;
+    color: #FFF;
+}
+
+.container label {
+    color: #FFF;
+font-family: Poppins;
+font-size: 15px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+
+.container input.form-check-input {
+    border-radius: 22px;
+    width: 52px;
+}
+
+.input-with-icon {
+    padding: 10px;
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 300;
+    color: #524E4E;
+    border-radius: 25px;
+    border:  none;
+    background: #D9D9D9;
+  }
+.input-with-icon:focus {
+    background: #D9D9D9;
+}
+
+#btn-buscar-ciudad {
+   border-top-left-radius: 25px;
+   border-bottom-left-radius: 25px;
+   background: #D9D9D9;
+   width: 55px;
+   padding-left: 20px;
+   cursor: pointer;
+}
+
+#btn-buscar-ciudad  img {
+    width: 30px;
+    margin: auto;
+   }
+
+
+
+
+.contenido-clima {
+    max-width: 800px;
+    background: linear-gradient(147deg, #AD36CB 26.56%, #333 67.75%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(255, 250, 250, 0.25), 0px 4px 4px 0px rgba(253, 245, 245, 0.25);
+    border-radius: 32px;
+}
+
+.contenido-clima h3,
+.contenido-clima .bi-geo-alt-fill {
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.contenido-clima .align-items-center h2,
+.contenido-clima .align-items-center i {
+    color: #F2F1F1;
+    font-family: Poppins;
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.contenido-clima .fecha-actual {
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+    color: #FFF;
+}
+
+.contenido-clima .justify-content-around  {
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #FFF;
+}
+.infoExtra {
+    margin-bottom: 20px;
+}
+
+.infoExtra div {
+    border-radius: 25px;
+    background: linear-gradient(180deg, #B32DD4 0%, rgba(217, 217, 217, 0.00) 100%);
+    margin: 20px 20px;
+    color: #FFF;
+    font-family: Poppins;
+    padding: 10px;
+    width: 121px;
+    height: 150px;
+}
+
+.infoExtra div img {
+    width: 60px;
+    height: 60px;
+}
+
+.infoExtra div p {
+   font-size: 15px;
+}
+
+/* SPINNER */
+.sk-cube-grid {
+    width: 40px;
+    height: 40px;
+    margin: 100px auto;
+  }
+  
+  .sk-cube-grid .sk-cube {
+    width: 33%;
+    height: 33%;
+    background-color: #FFF;
+    float: left;
+    -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; 
+  }
+  .sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  
+  @-webkit-keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+              transform: scale3D(1, 1, 1);
+    } 35% {
+      -webkit-transform: scale3D(0, 0, 1);
+              transform: scale3D(0, 0, 1); 
+    }
+  }
+  
+  @keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+      -webkit-transform: scale3D(1, 1, 1);
+              transform: scale3D(1, 1, 1);
+    } 35% {
+      -webkit-transform: scale3D(0, 0, 1);
+              transform: scale3D(0, 0, 1);
+    } 
+  }
