@@ -14,13 +14,7 @@ class Funciones {
         // Actualiza el contenido del div con la hora actual
         divHora.textContent = `${horaFormateada}:${minutosFormateados}:${segundosFormateados} ${(Number(horaFormateada) >= 12)  ? 'PM' : 'AM'}`;
       }
-
-      celsiusToFahrenheit(temp, tipo) {
-        return (tipo === 'F') ? Number(temp)*1.8+32 : (Number(temp)-32)/1.8;
-      }
-
-    
-      
+          
 }
 
 export default Funciones;

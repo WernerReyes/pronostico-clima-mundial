@@ -1,80 +1,92 @@
 class UI {
   mostrarClima(datos, container, tipo) {
+    
     this.limpiarHMTL(container);
 
-    if (typeof datos !== "string") {
-      const {
-        current: { temperature, humidity, visibility, feelslike, 
-                   wind_degree, pressure, wind_speed, cloudcover },
-        location: { name, localtime, country, lat, lon, timezone_id },
-      } = datos;
+    const {
+      current: {
+        temp_c,
+        temp_f,
+        humidity,
+        wind_degree,
+        last_updated,
+        vis_km,
+        pressure_in,
+        wind_kph,
+        cloud,
+        precip_in,
+      },
+      location: { name, lat, lon, tz_id, country },
+    } = datos;
 
-      // SCRIPTING
-      const contenidoClima = document.createElement("DIV");
-      contenidoClima.className = "contenido-clima p-3 mx-auto mt-4";
-      const divRegion = document.createElement("DIV");
-      divRegion.classList.add("d-flex");
-      const regionText = document.createElement("H3");
-      regionText.classList.add("mb-0");
-      regionText.textContent = name;
-      const iconUbicacion = document.createElement("I");
-      iconUbicacion.className = "bi bi-geo-alt-fill";
-      divRegion.appendChild(regionText);
-      divRegion.appendChild(iconUbicacion);
+    // SCRIPTING
+    const contenidoClima = document.createElement("DIV");
+    contenidoClima.className = "contenido-clima p-3 mx-auto mt-4";
+    const divRegion = document.createElement("DIV");
+    divRegion.classList.add("d-flex");
+    const regionText = document.createElement("H3");
+    regionText.classList.add("mb-0");
+    regionText.textContent = name;
+    const iconUbicacion = document.createElement("I");
+    iconUbicacion.className = "bi bi-geo-alt-fill";
+    divRegion.appendChild(regionText);
+    divRegion.appendChild(iconUbicacion);
 
-      const divClima = document.createElement("DIV");
-      divClima.className =
-        "d-flex align-items-center justify-content-center mt-5";
-      divClima.innerHTML = `
+    const divClima = document.createElement("DIV");
+    divClima.className =
+      "d-flex align-items-center justify-content-center mt-5";
+    divClima.innerHTML = `
         <i class="bi bi-thermometer-sun mx-2"></i>
-        <h2>${Math.round(temperature)}${(tipo) ? '°F' : '°C'}</h2>
+        <h2>${tipo ? temp_f+"°F" : temp_c+"°C"}</h2>
         <img src="img/Group 41.png" alt="" />
       `;
 
-      const divFecha = document.createElement("DIV");
-      divFecha.classList.add("fecha-actual");
-      divFecha.innerHTML = `${localtime} ${(Number(localtime.slice(11,13)) >= 12) ? 'PM' : 'AM'}; ${country}`;
+    const divFecha = document.createElement("DIV");
+    divFecha.classList.add("fecha-actual");
+    divFecha.innerHTML = `${last_updated} ${
+      Number(last_updated.slice(11, 13)) >= 12 ? "PM" : "AM"
+    }; ${country}`;
 
-      const divMasInfo = document.createElement("DIV");
-      divMasInfo.className =
-        "d-flex flex-wrap justify-content-center justify-content-around mt-5";
-      divMasInfo.innerHTML = `
+    const divMasInfo = document.createElement("DIV");
+    divMasInfo.className =
+      "d-flex flex-wrap justify-content-center justify-content-around mt-5";
+    divMasInfo.innerHTML = `
           <div class="text-center">
            <p class="mb-0">Humedad</p>
            <p>${humidity}%</p>
           </div>
           <div class="text-center">
            <p class="mb-0">Visibilidad</p>
-           <p>${visibility}Km</p>
+           <p>${vis_km}Km</p>
           </div>
           <div class="text-center">
-           <p class="mb-0">Presión del aire</p>
-           <p>${pressure}Km</p>
+           <p class="mb-0">Presión at.</p>
+           <p>${pressure_in}inHg</p>
           </div>
           <div class="text-center">
            <p class="mb-0">Velocidad del viento</p>
-           <p>${wind_speed}Km/h</p>
+           <p>${wind_kph}Km/h</p>
           </div>
       `;
 
-      contenidoClima.appendChild(divRegion);
-      contenidoClima.appendChild(divClima);
-      contenidoClima.appendChild(divFecha);
-      contenidoClima.appendChild(divMasInfo);
+    contenidoClima.appendChild(divRegion);
+    contenidoClima.appendChild(divClima);
+    contenidoClima.appendChild(divFecha);
+    contenidoClima.appendChild(divMasInfo);
 
-      const divInfoExtra = document.createElement("DIV");
-      divInfoExtra.className =
-        "infoExtra d-flex flex-wrap justify-content-center mt-5";
-      divInfoExtra.innerHTML = `
+    const divInfoExtra = document.createElement("DIV");
+    divInfoExtra.className =
+      "infoExtra d-flex flex-wrap justify-content-center mt-5";
+    divInfoExtra.innerHTML = `
          <div class="text-center">
             <p class="mb-0">Cobertura de nubes</p>
             <img class="img-fluid" src="img/nubes.png">
-            <p>${cloudcover}%</p>
+            <p>${cloud}%</p>
           </div>
           <div class="text-center">
-            <p class="mb-0">Sensación térmica actual</p>
+            <p class="mb-0">Precipitación</p>
             <img class="img-fluid" src="img/termica.png">
-            <p>${Math.round(feelslike)}${(tipo) ? '°F' : '°C'}</p>
+            <p>${precip_in}</p>
           </div>
           <div class="text-center">
             <p class="mb-0">Dirección del viento</p>
@@ -94,28 +106,14 @@ class UI {
           <div class="text-center">
             <p class="mb-0">Zona horaria</p>
             <img class="img-fluid" src="img/zona.png">
-            <p>${timezone_id}</p>
+            <p>${tz_id}</p>
           </div>
       `;
 
-      // Insertamos el HTML
-      container.appendChild(contenidoClima);
-      container.appendChild(divInfoExtra);
-      return;
-    }
-
-    const contenidoClima = document.createElement("DIV");
-    contenidoClima.className = "contenido-clima p-3 mx-auto mt-4";
-    const fueraServicio = document.createElement("DIV");
-    fueraServicio.className =
-      "d-flex align-items-center text-center flex-column mt-5";
-    fueraServicio.innerHTML = `
-      <h2 class"text-center">Api fuera de servicio</h2>
-      <img src="img/Group 41.png" style="width: 200px"/>
-    `;
-    contenidoClima.appendChild(fueraServicio);
-
+    // Insertamos el HTML
     container.appendChild(contenidoClima);
+    container.appendChild(divInfoExtra);
+
   }
 
   mostrarAviso(mensaje) {
@@ -166,10 +164,9 @@ class UI {
       showConfirmButton: false, // Ocultar el botón de confirmación
       allowOutsideClick: false, // Evitar que se cierre haciendo clic fuera del modal
       allowEscapeKey: false, // Evitar que se cierre con la tecla "Esc"
-      background: 'transparent',
+      background: "transparent",
       timer: 3000,
     });
-    
   }
 
   limpiarHMTL(container) {

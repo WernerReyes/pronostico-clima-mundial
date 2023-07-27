@@ -21,7 +21,7 @@ import Funciones from "./classes/Funciones.js";
     // Cunado el documento esta listo
     document.addEventListener("DOMContentLoaded", async () => {
       // Mostrar el clima de la ciudad de LIMA
-      const { data } = await api.obtenerDatos("Lima");
+      const{ data } = await api.obtenerDatos("Lima");
       ui.mostrarClima(data, contenidoClima);
 
       // Actualizamos la hora del header canda 1 SEGUNDO
@@ -71,21 +71,7 @@ import Funciones from "./classes/Funciones.js";
         return;
       }
 
-      const {
-        current: { temperature, feelslike },
-      } = clima;
       const isFahrenheit = e.target.checked;
-
-      if (isFahrenheit) {
-        clima.current.temperature = funcion.celsiusToFahrenheit(
-          temperature,
-          "F"
-        );
-        clima.current.feelslike = funcion.celsiusToFahrenheit(feelslike, "F");
-      } else {
-        clima.current.temperature = funcion.celsiusToFahrenheit(temperature);
-        clima.current.feelslike = funcion.celsiusToFahrenheit(feelslike);
-      }
 
       ui.mostrarClima(clima, contenidoClima, isFahrenheit ? "F" : undefined);
     });
